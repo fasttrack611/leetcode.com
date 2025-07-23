@@ -7,14 +7,24 @@ int findClosestNumber(int* nums, int numsSize) {
     int result = 0;
 
     for (int i = 0; i < numsSize; ++i) {
-        if (abs(nums[i]) < closest) {
-            closest = abs(nums[i]);
+        int absVal = abs(nums[i]);
+        if (absVal < closest) {
+            closest = absVal;
             result = nums[i];
-        } else if (abs(nums[i]) == closest) {
-            if (nums[i] > result) {
-                result = nums[i];
-            }
+        } else if (absVal == closest && nums[i] > result) {
+            result = nums[i];
         }
     }
     return result;
+}
+
+int main() {
+    // You can modify this array to test with different inputs
+    int nums[] = { -10, -3, 2, 5, -2, 3 };
+    int size = sizeof(nums) / sizeof(nums[0]);
+
+    int closest = findClosestNumber(nums, size);
+    printf("Closest number to zero: %d\n", closest);
+
+    return 0;
 }
