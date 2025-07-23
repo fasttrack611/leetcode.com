@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int timeRequiredToBuy(int* tickets, int ticketsSize, int k) {
+    int time = 0;
+    while (1) {
+        for (int i = 0; i < ticketsSize; i++) {
+            if (tickets[i] > 0) {
+                tickets[i]--;
+                time++;
+                if (i == k && tickets[i] == 0) {
+                    return time;
+                }
+            }
+        }
+    }
+}
